@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café Alegría ☕</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
+<head>
+
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<!-- 🟤 BARRA DE BÚSQUEDA -->
+<div class="search-bar">
+  <form action="#" class="search-form">
+    <select class="search-category">
+      <option>Todos</option>
+      <option>Café en grano</option>
+      <option>Café molido</option>
+      <option>Cápsulas</option>
+      <option>Accesorios</option>
+    </select>
+    <input type="text" placeholder="Buscar café, cápsulas o productos..." class="search-input">
+    <button type="submit" class="search-button">
+      <i class="fas fa-search"></i>
+    </button>
+  </form>
+</div>
+
+<!-- 🟤 NAVBAR -->
+<nav class="navbar">
+  <!-- Logo -->
+  <div class="logo">
+      <img src="https://img.freepik.com/vector-gratis/cafe-delicioso_24877-49164.jpg?semt=ais_hybrid&w=740&q=80" alt="Logo Café Alegría">
+    </div>
+
+  <!-- Enlaces -->
+  <div class="nav-links">
+    <a href="#Produccion">Producción</a>
+    <a href="#Capsulas">Cápsulas</a>
+    <a href="#Grano">Grano</a>
+    <a href="#Molido">Molido</a>
+    <a href="#Redes">Redes</a>
+  </div>
+
+  <!-- Carrito + Registrarse -->
+  <div class="right-section">
+    <a href="carrito.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Carrito</a>
+    <button class="subscribe-btn" id="abrirRegistro">Registrarse</button>
+  </div>
+</nav>
+
+<!-- 🟤 MODAL DE REGISTRO -->
+<div class="modal" id="modalRegistro">
+  <div class="modal-content">
+    <button class="close-btn" id="cerrarModal">&times;</button>
+
+    <!-- 🔸 Mensaje de descuento -->
+    <p style="color:#6f4e37; font-weight:bold; text-align:center; margin-bottom:10px;">
+      ☕ Si te registras obtendrás un descuento del 15% en tu compra
+    </p>
+
+    <h2>Crear cuenta</h2>
+    <input type="text" id="nombre" placeholder="Nombre completo" required>
+    <input type="email" id="email" placeholder="Correo electrónico" required>
+    <input type="password" id="password" placeholder="Contraseña" required>
+    <button onclick="registrarUsuario()">Registrarme</button>
+    <p id="mensajeRegistro" style="color:green; font-weight:bold; display:none; margin-top:10px;">¡Registro exitoso! ☕</p>
+  </div>
+</div>
+
+<style>
+    .navbar .logo img {
+      height: 60px;
+      width: auto;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    
+  </style>
+
+  <body>
+  	<!-- video de carrusel -->
+  <div id="carrusel-img">
+    <div id="carrusel-caja">
+      <div class="carrusel-elemento">
+        <video class="videos" width: 200% src="https://cdn.pixabay.com/video/2021/08/23/86112-593601005_large.mp4" controls muted></video>
+      </div>
+      <div class="carrusel-elemento">
+        <video class="videos" src="https://media.istockphoto.com/id/2165681400/video/raw-coffee-bean-hands-sifting-drying-coffee-beans-by-coffee-farmer.mp4?s=mp4-640x640-is&k=20&c=danYa4vdJjhbW2YjIuScPvnnA2scPHAigE592O7awII=" controls muted></video>
+      </div>
+      <div class="carrusel-elemento">
+        <video class="videos" src="https://cdn.pixabay.com/video/2018/04/08/15484-264671701_large.mp4" controls muted></video>
+      </div>
+    </div>
+
+</head>
+
+	 <button class="boton prev" onclick="mover(-1)">&#10094;</button>
+    <button class="boton next" onclick="mover(1)">&#10095;</button>
+  </div>
+
+  <a name="Produccion">
+
+  	<header>Producción</header>
+
+  <section class="descripcion-cafe">
+  <h2>☕ Café Alegría — Orgullo Venezolano</h2>
+  <p>
+    En <strong>Café Alegría</strong>, cada taza cuenta una historia que nace entre las montañas fértiles de 
+    <strong>Venezuela</strong>, donde la pasión y el aroma del café despiertan los sentidos. Nuestro café es 
+    <strong>cosechado a mano</strong> en las tierras altas de 
+    <strong>Mérida, Táchira y Trujillo</strong>, regiones bendecidas por su clima templado y su neblina constante, 
+    que brindan granos de calidad inigualable.
+  </p>
+  <p>
+    Cada grano es <strong>seleccionado cuidadosamente</strong> y trasladado a nuestros talleres en 
+    <strong>Lara</strong> y <strong>Portuguesa</strong>, donde se <strong>tosta artesanalmente</strong> para revelar 
+    su aroma profundo, cuerpo balanceado y notas dulces que evocan cacao, miel y panela.
+  </p>
+  <p>
+    Finalmente, es <strong>molido con precisión</strong> para conservar toda su frescura y sabor.  
+    <em>Café Alegría</em> no es solo una bebida: es una experiencia, un sentimiento y un homenaje a nuestras raíces,  
+    creado para <strong>alegrar tus sentidos</strong> con cada sorbo.
+  </p>
+</section>
+
+<style>
+  .descripcion-cafe {
+    max-width: 800px;
+    margin: 100px auto 60px auto;
+    padding: 40px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: justify;
+    color: #4b2e1e;
+    line-height: 1.7;
+    font-size: 1.05rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .descripcion-cafe:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  }
+
+  .descripcion-cafe h2 {
+    text-align: center;
+    color: #6b4226;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+
+  .descripcion-cafe strong {
+    color: #6b4226;
+  }
+
+  .descripcion-cafe em {
+    font-style: italic;
+    color: #8b5a2b;
+  }
+</style>
+
+  <a name="Capsulas">
+  <header>Café en Capsula</header>
+
+<div class="container">
+		<div class="producto">
+			<img src="https://media.istockphoto.com/id/2150116960/photo/espresso-capsules-in-white-background.jpg?s=1024x1024&w=is&k=20&c=igeBDIq7wfEKSEJHcRZYEm0IZgxVGoZ1nUJ01Epcwqg=" alt="Café Tradicional">
+			<h3>Café de 30 Capsulas</h3>
+      		<p>$7 USD</p>
+			<button onclick="agregarAlCarrito('Café Tradicional', 7)">Agregar al carrito</button>
+		</div>
+    <div class="producto">
+      <img src="https://cdn.pixabay.com/photo/2018/11/07/08/19/coffee-3799969_960_720.jpg" alt="Café Tradicional">
+      <h3>Café de 50 Capsulas</h3>
+      <p>$14 USD</p>
+      <button onclick="agregarAlCarrito('Café Premium', 14)">Agregar al carrito</button>
+    </div>
+	</div>
+
+	<!--cafe en granp-->
+	<a name="Grano">
+  <header>Café en Grano</header>
+  </a>
+
+  <div class="container">
+    <div class="producto">
+      <img src="https://cdn.pixabay.com/photo/2024/10/26/08/03/ai-generated-9150506_960_720.jpg" alt="Café Tradicional">
+      <h3>Café de 150gr</h3>
+      <p>$7 USD</p>
+      <button onclick="agregarAlCarrito('Café Tradicional', 7)">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <img src="https://cdn.pixabay.com/photo/2012/11/21/11/14/coffee-66850_1280.jpg" alt="Café Premium">
+      <h3>Café de 500gr</h3>
+      <p>$14 USD</p>
+      <button onclick="agregarAlCarrito('Café Premium', 14)">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <img src="https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg" alt="Café Orgánico">
+      <h3>Café de 1 kg</h3>
+      <p>$20 USD</p>
+      <button onclick="agregarAlCarrito('Café Orgánico', 20)">Agregar al carrito</button>
+    </div>
+  </div>
+	</body>
+
+	<!-- cafe molido-->
+		<a name="Molido">
+  <header> Cafe Molido</header>
+  </a>
+
+  <div class="container">
+    <div class="producto">
+      <img src="https://cdn.pixabay.com/photo/2021/07/23/11/00/ground-coffee-6487114_1280.jpg" alt="Café Tradicional">
+      <h3>Café de 150gr</h3>
+      <p>$7 USD</p>
+      <button onclick="agregarAlCarrito('Café Tradicional', 7)">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <img src="https://cdn.pixabay.com/photo/2021/07/23/23/39/coffee-6488330_1280.jpg" alt="Café Premium">
+      <h3>Café de 500gr</h3>
+      <p>$14 USD</p>
+      <button onclick="agregarAlCarrito('Café Premium', 14)">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <img src="https://cdn.pixabay.com/photo/2013/11/05/23/55/coffee-206142_1280.jpg" alt="Café Orgánico">
+      <h3>Café de 1 kg</h3>
+      <p>$20 USD</p>
+      <button onclick="agregarAlCarrito('Café Orgánico', 20)">Agregar al carrito</button>
+    </div>
+  </div>
+
+ 
+
+
+  <!--carrito-->
+	<a name="Carrito">
+  <header> Tienda de Café Artesanal</header>
+  </a>
+
+  <div class="container">
+    <div class="producto">
+      <img src="https://cdn.pixabay.com/photo/2021/07/23/11/00/ground-coffee-6487114_1280.jpg" alt="Café Tradicional">
+      <h3>Café de 150gr</h3>
+      <p>$7 USD</p>
+      <button onclick="agregarAlCarrito('Café Tradicional', 7)">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <img src="https://cdn.pixabay.com/photo/2021/07/23/23/39/coffee-6488330_1280.jpg" alt="Café Premium">
+      <h3>Café de 500gr</h3>
+      <p>$14 USD</p>
+      <button onclick="agregarAlCarrito('Café Premium', 14)">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <img src="https://cdn.pixabay.com/photo/2013/11/05/23/55/coffee-206142_1280.jpg" alt="Café Orgánico">
+      <h3>Café de 1 kg</h3>
+      <p>$20 USD</p>
+      <button onclick="agregarAlCarrito('Café Orgánico', 20)">Agregar al carrito</button>
+    </div>
+
+  
+
+  <div class="producto">
+      <img src="https://cdn.pixabay.com/photo/2024/10/26/08/03/ai-generated-9150506_960_720.jpg" alt="Café Tradicional">
+      <h3>Café Grano de 150gr</h3>
+      <p>$7 USD</p>
+      <button onclick="agregarAlCarrito('Café Tradicional', 7)">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <img src="https://cdn.pixabay.com/photo/2012/11/21/11/14/coffee-66850_1280.jpg" alt="Café Premium">
+      <h3>Café Grano de 500gr</h3>
+      <p>$14 USD</p>
+      <button onclick="agregarAlCarrito('Café Premium', 14)">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <img src="https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg" alt="Café Orgánico">
+      <h3>Café de 1 kg</h3>
+      <p>$20 USD</p>
+      <button onclick="agregarAlCarrito('Café Orgánico', 20)">Agregar al carrito</button>
+    </div>
+
+    <div class="container">
+		<div class="producto">
+			<img src="https://media.istockphoto.com/id/2150116960/photo/espresso-capsules-in-white-background.jpg?s=1024x1024&w=is&k=20&c=igeBDIq7wfEKSEJHcRZYEm0IZgxVGoZ1nUJ01Epcwqg=" alt="Café Tradicional">
+			<h3>Café de 30 Capsulas</h3>
+      		<p>$7 USD</p>
+			<button onclick="agregarAlCarrito('Café Tradicional', 7)">Agregar al carrito</button>
+		</div>
+    <div class="producto">
+      <img src="cafe/1kgG.png" alt="Café Tradicional">
+      <h3>Café de 50 Capsulas</h3>
+      <p>$14 USD</p>
+      <button onclick="agregarAlCarrito('Café Premium', 14)">Agregar al carrito</button>
+    </div>
+  </div>
+  </div>
+
+
+
+  <!--<div id="carrito">
+  <h2>🛒 Carrito de Compras</h2>
+  <div id="listaCarrito"></div>
+  <p id="total">Total: $0 USD</p>
+  <button id="btnConfirmar" onclick="confirmarCompra()">✅ Confirmar Compra</button>
+  <p id="mensajeCompra" style="display:none; color:green; font-weight:bold; margin-top:10px;">
+    ¡Gracias por tu compra! ☕
+  </p>
+</div>-->
+
+<script>
+  
+</script>
+ <h2 style="text-align: center; color: #992C18;" class="italica"><i>Somos más que un café, somos un sentimiento: Café Alegría, alegrando tus sentidos.</i> </h2>
+
+ <a name="Redes">
+
+ <footer>
+  <h3>🌐 Síguenos en nuestras redes sociales</h3>
+  <div class="redes-sociales">
+    <a href="https://www.facebook.com/CafeAlegriaOficial" target="_blank">📘 Facebook</a>
+    <a href="https://www.instagram.com/CafeAlegriaOficial" target="_blank">📸 Instagram</a>
+    <a href="https://www.twitter.com/CafeAlegriaLatam" target="_blank">🐦 Twitter</a>
+    <a href="https://www.tiktok.com/@CafeAlegria" target="_blank">🎵 TikTok</a>
+    <a href="https://www.youtube.com/@CafeAlegria" target="_blank">▶️ YouTube</a>
+  </div>
+  <p>© 2025 Café Alegría — Todos los derechos reservados</p>
+</footer>
+
+<style>
+footer {
+  margin-top: 60px;
+  padding: 30px;
+  background-color: #6b4226;
+  color: white;
+  text-align: center;
+  border-top: 3px solid #4b2e1e;
+}
+
+footer h3 {
+  margin-bottom: 15px;
+}
+
+.redes-sociales {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.redes-sociales a {
+  color: #ffd9b3;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.redes-sociales a:hover {
+  color: #ffffff;
+}
+</style>
+
+ <script type="script.js"></script>
+
+</body>
+</html>

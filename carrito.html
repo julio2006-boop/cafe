@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito de Compras - Café Alegría</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 🟤 NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="https://img.freepik.com/vector-gratis/cafe-delicioso_24877-49164.jpg?semt=ais_hybrid&w=740&q=80" alt="Logo Café Alegría">
+    </div>
+
+    <div class="nav-buttons">
+      <a href="cafe alegria.html" class="volver-btn">Volver</a>
+    </div>
+  </nav>
+
+  <!-- 🟤 CONTENIDO PRINCIPAL -->
+  <main class="contenido">
+    <section class="carrito">
+      <h2>🛒 Carrito de Compras</h2>
+      <ul id="lista-carrito"></ul>
+      <p id="totalCarrito">Total: $0 USD</p>
+      <button id="confirmarCompra">Confirmar Compra</button>
+      <p id="mensajeCompra" style="display:none; color:green; font-weight:bold; margin-top:10px;">
+        ¡Gracias por tu compra! ☕
+      </p>
+    </section>
+  </main>
+
+  <!-- 🟤 SCRIPT FUNCIONAL -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      const lista = document.getElementById("lista-carrito");
+      const totalTexto = document.getElementById("totalCarrito");
+      const btnConfirmar = document.getElementById("confirmarCompra");
+      const mensajeCompra = document.getElementById("mensajeCompra");
+
+      // Función para renderizar carrito
+      function renderizarCarrito() {
+        lista.innerHTML = "";
+        let total = 0;
+
+        carrito.forEach((p, index) => {
+          const li = document.createElement("li");
+          li.classList.add("item-carrito");
+          li.innerHTML = `
+            <span>${p.nombre} - $${p.precio} USD</span>
+            <button class="eliminar-btn" data-index="${index}">❌ Eliminar</button>
+          `;
+          lista.appendChild(li);
+          total += p.precio;
+        });
+
+        // Aplicar descuento si el usuario está registrado
+        const registrado = localStorage.getItem("usuarioRegistrado");
+        if (registrado) {
+          const descuento = total * 0.15;
+          const totalFinal = total - descuento;
+          totalTexto.textContent = 
+            `Total original: $${total} USD | Descuento 15%: -$${descuento.toFixed(2)} USD | Total final: $${totalFinal.toFixed(2)} USD`;
+        } else {
+          totalTexto.textContent = `Total: $${total.toFixed(2)} USD`;
+        }
+
+        // Guardar cambios en localStorage
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+      }
+
+      // Evento para eliminar un producto
+      lista.addEventListener("click", (e) => {
+        if (e.target.classList.contains("eliminar-btn")) {
+          const index = e.target.dataset.index;
+          carrito.splice(index, 1); // Eliminar producto
+          renderizarCarrito(); // Volver a mostrar
+        }
+      });
+
+      // Confirmar compra
+      btnConfirmar.addEventListener("click", () => {
+        if (carrito.length === 0) {
+          alert("Tu carrito está vacío.");
+          return;
+        }
+
+        localStorage.removeItem("carrito");
+        carrito = [];
+        renderizarCarrito();
+        mensajeCompra.style.display = "block";
+      });
+
+      renderizarCarrito(); // Mostrar carrito al cargar
+    });
+  </script>
+
+  <!-- 🟤 ESTILOS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f6f2ed;
+      color: #4b2e1e;
+    }
+
+    /* 🔸 Barra de navegación */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #6b4226;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      color: white;
+      z-index: 1000;
+    }
+
+    .navbar .logo img {
+      height: 60px;
+      width: auto;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .nav-buttons a {
+      background-color: #4b2e1e;
+      color: white;
+      text-decoration: none;
+      border: 1px solid white;
+      border-radius: 15px;
+      padding: 8px 15px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .nav-buttons a:hover {
+      background-color: #8b5e3c;
+    }
+
+    /* 🔸 Contenido principal */
+    .contenido {
+      padding-top: 120px; /* espacio para navbar */
+      text-align: center;
+    }
+
+    .carrito {
+      background-color: white;
+      margin: 0 auto;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .carrito ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 15px;
+      text-align: left;
+    }
+
+    .item-carrito {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .eliminar-btn {
+      background-color: #d9534f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .eliminar-btn:hover {
+      background-color: #c9302c;
+    }
+
+    .carrito button {
+      background-color: #6b4226;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .carrito button:hover {
+      background-color: #8b5e3c;
+    }
+  </style>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
